@@ -1,12 +1,14 @@
 struct node {
-    int data;
+    char * data;
     struct node * next;
 };
 
 
 
-void print_list( struct node * current );
+void print_list( struct node * );
 
-struct node * insert_front( struct node * n, int i );
+struct node * insert_front( struct node *, char * );
 
-struct node * free_list( struct node * current );
+struct node * free_list( struct node * );
+
+struct node * insert_after( struct node *, char * );

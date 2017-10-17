@@ -4,6 +4,6 @@
 
 
 int main(){
-
+    printf("Main has been run!\n");
     return 0;
 }

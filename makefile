@@ -1,16 +1,18 @@
-org_test: linked_list.o organizer.o
-	gcc -o org_test linked_list.o organizer.o
+tests: linked_list.o library.o main.o
+	gcc -o tests main.o linked_list.o library.o
 
 linked_list.o: linked_list.c linked_list.h
 	gcc -c linked_list.c
 
-organizer.o: organizer.c linked_list.h
-	gcc -c organizer.c
+library.o: library.c linked_list.h
+	gcc -c library.c
+
+main.o: main.c linked_list.h
+	gcc -c main.c
 
 clean:
-	rm lists
-	rm *~
 	rm *.o
+	rm tests
 
-run: all
-	./lists
+run: tests
+	./tests
