@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
-struct node {
-    int data;
-    struct node * next;
-};
-
+#include "linkedlist.h"
 
 
 void print_list( struct node * current ){
@@ -36,19 +30,12 @@ struct node * free_list( struct node * current ){
     return NULL;
 }
 
-
-int main(){
-    struct node * list = (struct node *)malloc( sizeof(struct node) );
-    list->data = 10;
-    list->next = NULL;
-    print_list( list );
-    list = insert_front(list, 9);
-    list = insert_front(list, 8);
-    list = insert_front(list, 7);
-    list = insert_front(list, 6);
-    list = insert_front(list, 5);
-    print_list( list );
-    free_list( list );
-
-    return 0;
+struct node * insert_after( struct node * prev, int data ){
+	struct node * new = (struct node *)malloc( sizeof(struct node) );
+	new->data = data;
+	new->next = prev->next;
+	prev->next = new;
+	return new;
 }
+
+
