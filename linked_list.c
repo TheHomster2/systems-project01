@@ -47,3 +47,13 @@ struct node * insert_after( struct node * prev, char * str ){
 	prev->next = new;
 	return new;
 }
+
+
+// removes the specified node from the list and returns its value
+char * remove( struct node * n ){
+    char * str = n->data;
+    struct node * temp = n; // to free the data
+    n = n->next;
+    free( temp );
+    return str;
+}
