@@ -14,3 +14,4 @@ struct node * free_list( struct node * );
 
 // new functions
 struct node * insert_after( struct node *, char * );
+char * remove_node( struct node * );

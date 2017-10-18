@@ -50,7 +50,7 @@ struct node * insert_after( struct node * prev, char * str ){
 
 
 // removes the specified node from the list and returns its value
-char * remove( struct node * n ){
+char * remove_node( struct node * n ){
     char * str = n->data;
     struct node * temp = n; // to free the data
     n = n->next;
