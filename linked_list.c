@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "linked_list.h"
 
 
@@ -58,21 +59,23 @@ struct node * insert_at( struct node * n, int index, char * str ){
 
 
 // removes the specified node from the list (must be a valid index) and returns
-// its value
-// DOESN'T WORK FOR FIRST NODE
-char * remove_node( struct node * n, int index ){
+// a pointer to it
+// IF INDEX != 0: RETURNS A POINTER TO THE REMOVED NODE
+// IF INDEX = 0: RETURNS A POINER TO THE NEW FRONT
+struct node * remove_node( struct node * n, int index ){
+    if( !index ){
+        return remove_front( n );
+    }
     while( --index ){
         n = n->next;
     }
-    char * str = n->next->data;
-    struct node * temp = n->next; // to free the data
+    struct node * temp = n->next; // to return
     n->next = n->next->next;
-    free( temp );
-    return str;
+    return temp;
 }
 
 
-// removes the first node from the list and returns the new front
+// removes the first node from the list
 struct node * remove_front( struct node * n ){
     struct node * temp = n; // for freeing memory
     n = n->next;
@@ -102,4 +105,25 @@ struct node * first_song( struct node * n, char * artist){
         n = n->next;
     }
     return NULL;
+}
+
+
+
+// returns a pointer to a random node in the list (I DON'T LIKE THIS IMPLEMENTATION
+// BUT I'M TOO LAZY TO MAKE A BETTER ONE)
+struct node * rand_song( struct node * n ){
+    struct node * temp = n;
+    int list_len = 0;
+    while( temp ){
+        list_len++;
+        temp = temp->next;
+        // printf("CURRENT ADDRESS: %p\n", temp);
+    }
+    int index = rand() % list_len;
+    // printf("INDEX = %d\n", index);
+    while( index ){
+        index--;
+        n = n->next;
+    }
+    return n;
 }
