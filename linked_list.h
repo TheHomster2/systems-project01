@@ -13,5 +13,8 @@ struct node * insert_front( struct node *, char * );
 struct node * free_list( struct node * );
 
 // new functions
-struct node * insert_after( struct node *, char * );
-char * remove_node( struct node * );
+struct node * insert_at( struct node *, int, char * );
+char * remove_node( struct node *, int );
+struct node * remove_front( struct node * );
+struct node * find_song(struct node *, char *);
+struct node * first_song(struct node *, char *);
