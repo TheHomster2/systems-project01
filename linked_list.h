@@ -18,5 +18,5 @@ struct node * insert_at( struct node *, int, char * );
 struct node * remove_node( struct node *, int );
 struct node * remove_front( struct node * );
 struct node * find_song(struct node *, char *);
-struct node * first_song(struct node *, char *);
+struct node * first_song_by(struct node *, char *);
 struct node * rand_song( struct node * );

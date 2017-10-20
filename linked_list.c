@@ -145,8 +145,8 @@ struct node * find_song( struct node * n, char * art_song_name){
 }
 
 
-// returns a point to the first song of the given artist name
-struct node * first_song( struct node * n, char * artist){
+// returns a pointer to the first song of the given artist name
+struct node * first_song_by( struct node * n, char * artist){
     while( n ){
         if( strstr(n->data, artist) ){
             return n;
