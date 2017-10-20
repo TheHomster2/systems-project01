@@ -8,9 +8,12 @@
 
 int main(){
     // LINKED LIST TESTS:
-    /*
+
     struct node * test_list = NULL;
     srand( time(NULL) );
+
+    printf("LINKED LIST TESTS:\n");
+    printf("===========================================================================");
 
     printf("\nTesting insert_front:\n");
     test_list = insert_front(test_list, "kendrick lamar:humble");
@@ -29,8 +32,8 @@ int main(){
     print_list( test_list );
 
     printf("\nREFRESHING LIST:\n");
-    test_list = insert_front(test_list, "adelle:hello");
-    test_list = insert_front(test_list, "mariah kerry:all i want for christmas");
+    test_list = insert_ordered(test_list, "adelle:hello");
+    test_list = insert_ordered(test_list, "mariah kerry:all i want for christmas");
     print_list( test_list );
 
     printf("\nTesting find_song:\n");
@@ -64,10 +67,10 @@ int main(){
 
 
     free( test_list );
-    */
 
 
 
+    /*
     struct node * player[26];
     for(int i = 0; i < 26; i++){
         player[i] = NULL;
@@ -88,6 +91,6 @@ int main(){
     for(int i = 0; i < 26; i++){
         free(player[i]);
     }
-    
+    */
     return 0;
 }
