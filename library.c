@@ -5,12 +5,23 @@
 #include "linked_list.h"
 #include "library.h"
 
-struct node * player[26];
 
-void add_song( char * song ){
-    int index = song[0] - 97; // using the ascii values to get the index for the table
-    struct node * n = player[ index ];
-    while( n && strcmp( n->data, song ) ){
-        
+void add_song( struct node * player[], char * song ){
+    int player_index = song[0] - 97; // using the ascii values to get the index for the table
+    struct node * n = player[ player_index ];
+    n = insert_ordered(n, song);
+    player[ player_index ] = n;
+    return;
+}
+
+
+void print_lib( struct node * player[] ){
+    int i = 0;
+    for(; i < 26; i++){
+        char letter = i + 97;
+        if( player[i] ){
+            printf("Entries under letter \'%c\':\n", letter);
+            print_list( player[i] );
+        }
     }
 }

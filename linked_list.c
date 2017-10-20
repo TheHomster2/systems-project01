@@ -8,12 +8,17 @@
 // prints out the entire list (doesn't work on an empty list)
 void print_list( struct node * current ){
     printf("[");
+    if( !current ){
+        printf("]\n");
+        return;
+    }
     while( current->next ){
         printf("%s, ", current->data);
         current = current->next;
     }
     printf("%s]\n", current->data);
 }
+
 
 
 
@@ -39,6 +44,39 @@ struct node * free_list( struct node * current ){
 }
 
 
+// inserts a new node in alphabetical order and returns a pointer to the head
+struct node * insert_ordered( struct node * n, char * song ){
+    struct node * new = (struct node *)malloc( sizeof(struct node) );
+    new->data = song;
+    new->next = NULL;
+
+    // handle first node case
+    if( !n ){
+        return new;
+    }
+
+    // if it's the new front;
+    if( strcmp(song, n->data) < 0 ){
+        new->next = n;
+        return new;
+    }
+
+    struct node * head = n;
+    struct node * temp = (struct node *)malloc( sizeof(struct node) );
+
+    while( n && strcmp( song, n->data) > 0 ){
+        temp = n;
+        n = n->next;
+    }
+
+    temp->next = new;
+    new->next = n;
+
+    return head;
+}
+
+
+
 
 // inserts a new node at a specific index (must be a valid index) and returns a
 // pointer to the new node.
@@ -56,6 +94,17 @@ struct node * insert_at( struct node * n, int index, char * str ){
 	return new;
 }
 
+
+/*
+// inserts after a specific node
+struct node * insert_after( struct node * prev, char * str ){
+    struct node * new = (struct node *)malloc( sizeof(struct node) );
+	new->data = str;
+	new->next = n->next;
+	n->next = new;
+	return new;
+}
+*/
 
 
 // removes the specified node from the list (must be a valid index) and returns

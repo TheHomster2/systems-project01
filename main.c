@@ -3,9 +3,12 @@
 #include <string.h>
 #include <time.h>
 #include "linked_list.h"
+#include "library.h"
 
 
 int main(){
+    // LINKED LIST TESTS:
+    /*
     struct node * test_list = NULL;
     srand( time(NULL) );
 
@@ -61,5 +64,30 @@ int main(){
 
 
     free( test_list );
+    */
+
+
+
+    struct node * player[26];
+    for(int i = 0; i < 26; i++){
+        player[i] = NULL;
+    }
+    // print_lib( player );
+
+    printf("\nTesting add_song:\n");
+    add_song(player, "bruno mars:uptown funk");
+    add_song(player, "bruno mars:star");
+    add_song(player, "bruno mars:a song with a");
+    add_song(player, "bruno mars:a song with z");
+    add_song(player, "eminem:campaign speech");
+    add_song(player, "eminem:stronger");
+    add_song(player, "adelle:hello");
+    add_song(player, "adelle:rolling in the deep");
+    print_lib( player );
+
+    for(int i = 0; i < 26; i++){
+        free(player[i]);
+    }
+    
     return 0;
 }

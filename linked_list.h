@@ -13,6 +13,7 @@ struct node * insert_front( struct node *, char * );
 struct node * free_list( struct node * );
 
 // new functions
+struct node * insert_ordered( struct node *, char *);
 struct node * insert_at( struct node *, int, char * );
 struct node * remove_node( struct node *, int );
 struct node * remove_front( struct node * );
