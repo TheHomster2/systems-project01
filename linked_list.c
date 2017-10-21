@@ -22,8 +22,8 @@ void print_list( struct node * current ){
 
 
 
-// inserts a node at the front of the list, returns the a pointer to
-// the new front
+// inserts a node at the front of the list given a song in the form artist:song
+// and returns a pointer to the new front
 struct node * insert_front( struct node * front, char * str ){
     struct node * new_front = (struct node *)malloc( sizeof(struct node) );
     new_front->data = str;
@@ -45,6 +45,7 @@ struct node * free_list( struct node * current ){
 
 
 // inserts a new node in alphabetical order and returns a pointer to the head
+// given a song in the form artist:song
 struct node * insert_ordered( struct node * n, char * song ){
     struct node * new = (struct node *)malloc( sizeof(struct node) );
     new->data = song;
