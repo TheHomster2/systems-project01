@@ -6,3 +6,4 @@ void print_letter( struct node * [], char );
 void print_songs_of( struct node * [], char * );
 void remove_song(struct node * [], char * );
 void remove_all(struct node * [] );
+void shuffle( struct node * [], int );

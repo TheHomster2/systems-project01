@@ -60,29 +60,17 @@ void print_songs_of( struct node * player[], char * artist){
     }
 }
 
-/*
-void shuffle( struct node * player[], int n){
-    // find the first entry in the player
-    int start_index = 0;
-    while( !player[start_index] && start_index < 26){
-        start_index++;
-    }
-    if (start_index >= 26){ // if there are no entries in the library
-        return;
-    }
-    // link everything into one big list
-    struct node * big_list = player[start_index];
-    for( int i = 0; i < 26; i++ ){
-        if( player[i] ){
-            last_node( big_list )->next = player[i];
-        }
-    }
 
-    for (int j = 0; j < n; j++){
-        printf("%s\n", rand_song( big_list ) -> data);
+void shuffle( struct node * player[], int n){
+    for( int i = 0; i < n; i++ ){
+        int rand_letter = rand() % 26;
+        while( !player[rand_letter] ){ // bad solution but w/e
+            rand_letter = rand() % 26;
+        }
+        printf("%s\n", rand_song( player[rand_letter] )->data );
     }
 }
-*/
+
 
 // delete a song given in the form artist:song
 void remove_song(struct node * player[], char * song){

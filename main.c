@@ -128,11 +128,11 @@ int main(){
     print_songs_of(player, "eminem");
     printf("==============================\n");
 
-    /*
+
     printf("\nTesting shuffle:\n");
-    shuffle(player, 1);
-    */
-    
+    shuffle(player, 10);
+    printf("==============================\n");
+
     printf("\nTesting remove_song:\n");
     remove_song(player, "eminem:stronger");
     printf("Removed eminem:stronger:\n");
