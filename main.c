@@ -18,12 +18,12 @@ int main(){
     printf("\nTesting insert_front/print_list:\n");
     test_list = insert_front(test_list, "kendrick lamar:humble");
     test_list = insert_front(test_list, "adelle:hello");
-    test_list = insert_front(test_list, "mariah kerry:all i want for christmas");
     print_list(test_list);
     printf("==============================\n");
 
-    printf("\nTesting insert_at:\n");
-    insert_at( test_list, 2, "kendrick lamar:dna");
+    printf("\nTesting insert_ordered:\n");
+    test_list = insert_ordered( test_list, "kendrick lamar:dna");
+    test_list = insert_ordered(test_list, "mariah kerry:all i want for christmas");
     print_list(test_list);
     printf("==============================\n");
 
@@ -65,9 +65,8 @@ int main(){
     printf("==============================\n");
 
     printf("\nTesting remove_node:\n");
-    free( remove_node( test_list, 1) );
-    print_list(test_list);
-    test_list = remove_node( test_list, 0 );
+    test_list = remove_node( test_list, find_song( test_list, "mariah kerry:all i want for christmas") );
+    test_list = remove_node( test_list, find_song( test_list, "adelle:hello") );
     print_list( test_list );
     printf("==============================\n");
 
@@ -94,11 +93,57 @@ int main(){
     add_song(player, "eminem:stronger");
     add_song(player, "adelle:hello");
     add_song(player, "adelle:rolling in the deep");
+    add_song(player, "pearl jam:a song");
+    add_song(player, "pearl jam:b song");
+    add_song(player, "pearl jam:c song");
+    add_song(player, "pink floyd:a song");
+    add_song(player, "pink floyd:b song");
+    add_song(player, "pink floyd:c song");
+    add_song(player, "post malone:white iverson");
+    add_song(player, "post malone:rockstar");
     print_lib( player );
+    printf("==============================\n");
 
-    for(int i = 0; i < 26; i++){
-        free(player[i]);
-    }
+    printf("\nTesting get_song:\n");
+    printf("Getting adelle:hello:\n");
+    printf("%s\n", get_song(player, "adelle:hello")->data );
+    printf("Getting eminem:stronger:\n");
+    printf("%s\n", get_song(player, "eminem:stronger")->data );
+    printf("==============================\n");
+
+    printf("\nTesting find_artist:\n");
+    printf("All songs following pink floyd:\n");
+    print_list( find_artist(player, "pink floyd") );
+    printf("==============================\n");
+
+    printf("\nTesting print_letter:\n");
+    printf("All songs by artists starting with \'p\'\n");
+    print_letter(player, 'p');
+    printf("==============================\n");
+
+    printf("\nTesting print_songs_of:\n");
+    printf("All songs by post malone:\n");
+    print_songs_of(player, "post malone");
+    printf("All songs by eminem:\n");
+    print_songs_of(player, "eminem");
+    printf("==============================\n");
+
+    /*
+    printf("\nTesting shuffle:\n");
+    shuffle(player, 1);
+    */
+    
+    printf("\nTesting remove_song:\n");
+    remove_song(player, "eminem:stronger");
+    printf("Removed eminem:stronger:\n");
+    print_lib(player);
+    printf("==============================\n");
+
+    printf("\nTesting remove_all:\n");
+    remove_all(player);
+    print_lib(player);
+    printf("==============================\n");
+
 
     return 0;
 }

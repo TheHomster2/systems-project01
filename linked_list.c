@@ -75,62 +75,25 @@ struct node * insert_ordered( struct node * n, char * song ){
     return head;
 }
 
-
-
-
-// inserts a new node at a specific index (must be a valid index) and returns a
-// pointer to the new node.
-struct node * insert_at( struct node * n, int index, char * str ){
-    if( index == 0 ){ // special case
-        return insert_front(n, str);
+// removes the specified node from the list and returns the head
+struct node * remove_node( struct node * head,  struct node * n){
+    if( head == n ){ // to remove the front
+        head = head->next;
+        free(n);
+        return head;
     }
-    while( --index ){ // get the node in front of where you're inserting
-        n = n->next;
+
+    struct node * temp = head;
+    while( temp->next != n ){
+        temp = temp->next;
     }
-	struct node * new = (struct node *)malloc( sizeof(struct node) );
-	new->data = str;
-	new->next = n->next;
-	n->next = new;
-	return new;
+
+    temp->next = n->next;
+    free(n);
+
+    return head;
 }
 
-
-/*
-// inserts after a specific node
-struct node * insert_after( struct node * prev, char * str ){
-    struct node * new = (struct node *)malloc( sizeof(struct node) );
-	new->data = str;
-	new->next = n->next;
-	n->next = new;
-	return new;
-}
-*/
-
-
-// removes the specified node from the list (must be a valid index) and returns
-// a pointer to it
-// IF INDEX != 0: RETURNS A POINTER TO THE REMOVED NODE
-// IF INDEX = 0: RETURNS A POINER TO THE NEW FRONT
-struct node * remove_node( struct node * n, int index ){
-    if( !index ){
-        return remove_front( n );
-    }
-    while( --index ){
-        n = n->next;
-    }
-    struct node * temp = n->next; // to return
-    n->next = n->next->next;
-    return temp;
-}
-
-
-// removes the first node from the list
-struct node * remove_front( struct node * n ){
-    struct node * temp = n; // for freeing memory
-    n = n->next;
-    free(temp);
-    return n;
-}
 
 
 // returns a pointer based on a artist name and song name in the form artist:song
@@ -177,3 +140,15 @@ struct node * rand_song( struct node * n ){
     return n;
 }
 
+
+
+// returns the last node of a list
+struct node * last_node( struct node * n ){
+    if( !n ){
+        return n;
+    }
+    while( n->next ){
+        n = n->next;
+    }
+    return n;
+}
