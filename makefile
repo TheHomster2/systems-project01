@@ -1,13 +1,13 @@
-tests: linked_list.o library.o main.o
-	gcc -o tests main.o linked_list.o library.o
+tests: linked_list.o music_library.o main.o
+	gcc -o tests main.o linked_list.o music_library.o
 
-linked_list.o: linked_list.c linked_list.h library.h
+linked_list.o: linked_list.c linked_list.h
 	gcc -c linked_list.c
 
-library.o: library.c linked_list.h
-	gcc -c library.c
+music_library.o: music_library.c linked_list.h music_library.h
+	gcc -c music_library.c
 
-main.o: main.c linked_list.h
+main.o: main.c linked_list.h music_library.h
 	gcc -c main.c
 
 clean:

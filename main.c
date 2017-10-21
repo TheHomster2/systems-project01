@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "linked_list.h"
-#include "library.h"
+#include "music_library.h"
 
 
 int main(){
@@ -15,7 +15,7 @@ int main(){
     printf("LINKED LIST TESTS:\n");
     printf("===========================================================================================\n");
 
-    printf("\nTesting insert_front:\n");
+    printf("\nTesting insert_front/print_list:\n");
     test_list = insert_front(test_list, "kendrick lamar:humble");
     test_list = insert_front(test_list, "adelle:hello");
     test_list = insert_front(test_list, "mariah kerry:all i want for christmas");
@@ -76,14 +76,16 @@ int main(){
 
 
 
-    /*
+    printf("\nMUSIC LIBRARY TESTS:\n");
+    printf("\n===========================================================================================\n");
+
     struct node * player[26];
     for(int i = 0; i < 26; i++){
         player[i] = NULL;
     }
     // print_lib( player );
 
-    printf("\nTesting add_song:\n");
+    printf("\nTesting add_song/print_lib:\n");
     add_song(player, "bruno mars:uptown funk");
     add_song(player, "bruno mars:star");
     add_song(player, "bruno mars:a song with a");
@@ -97,6 +99,6 @@ int main(){
     for(int i = 0; i < 26; i++){
         free(player[i]);
     }
-    */
+
     return 0;
 }
